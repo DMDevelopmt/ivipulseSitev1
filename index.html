@@ -30,11 +30,24 @@
 						placeholder="Mot de passe">
 					</td>
 				</tr>
+				<tr ng-show="state.mode=='inscription'">
+					<td>
+						<input type="text" name="password_check"
+						ng-model="password_check"
+						placeholder="Confirmer votre mot de passe">
+					</td>
+				</tr>
 				<tr style = "padding: 20px">
 					<td>
 						<button
+						ng-if="state.mode =='connexion'"
 						ng-click="email_login()">
 							Connexion
+						</button>
+						<button
+						ng-if="state.mode =='inscription'"
+						ng-click="email_signin()">
+							Inscription
 						</button>
 					</td>
 				</tr>
@@ -42,8 +55,13 @@
 		<div ng-if="err.message==null" align="center">
 			Bienvenue {{user.first_name}} {{user.last_name}} !
 		</div>
-		<br><br>
+		<br>
 		<div ng-if="err.message" style="color: red" align="center">{{err.message}}</div>
+		<br><br>
+		<button ng-click="state.mode = 'connexion'">Se connecter</button>
+		<br>
+		<button ng-click="state.mode = 'inscription'">S'inscrire</button>
+		
 		<br><br>
 		
 		<br><br>

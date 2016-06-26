@@ -1,7 +1,8 @@
 app.factory('me', function($q, $http){
 	//définition d'url racine du serveur d'application 
 	//(a pour vocation de migrer vers le fichier principal)
-	var ROOT_URL = 'http://192.168.1.16:8180';
+	//var ROOT_URL = 'http://192.168.1.16:8180';
+	var ROOT_URL = 'http://192.168.0.40:8180';
 
 	//initialisation de la variable user
 	var user = {};
@@ -63,7 +64,9 @@ app.factory('me', function($q, $http){
 				//appel au serveur pour la requête d'inscription
 				//en transmettant en second paramètre l'objet data
 				//contenant l'email et le password
-				$http.post("#{ROOT_URL}/users/signin", data)
+				$http.post(ROOT_URL + "/users/signin", data, {
+
+				})
 				//en cas de succès
 				.success(function(res) {
 					//si le user existe
