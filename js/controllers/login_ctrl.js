@@ -65,4 +65,8 @@ app.controller("login_ctrl", function ($scope, $http, me) {
   		
   	}
 
+  	$scope.fillin = function(){
+  		
+  	}
+
 });
