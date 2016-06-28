@@ -1,8 +1,8 @@
 app.factory('me', function($q, $http){
 	//définition d'url racine du serveur d'application 
 	//(a pour vocation de migrer vers le fichier principal)
-	//var ROOT_URL = 'http://192.168.1.16:8180';
-	var ROOT_URL = 'http://192.168.0.40:8180';
+	var ROOT_URL = 'http://192.168.1.14:8180';
+	//var ROOT_URL = 'http://192.168.0.40:8180';
 
 	//initialisation de la variable user
 	var user = {};
@@ -28,7 +28,7 @@ app.factory('me', function($q, $http){
 				//contenant l'email et le password
 				$http.post(ROOT_URL + "/users/login", data)
 				//en cas de succès
-				.success(function(res) {
+				.then(function(res) {
 					//si le user existe
 					if(res.me) {
 						//on resout la promesse en transmettant l'attribut 'me' de 
@@ -40,9 +40,9 @@ app.factory('me', function($q, $http){
 						reject("Problème interne, essayez plus tard");
 					}
 
-				})
+				}),
 				//si la requête produit une erreur
-				.error(function () {
+				(function () {
 					reject("Email ou mot de passe incorrect");
 				});
 			});
